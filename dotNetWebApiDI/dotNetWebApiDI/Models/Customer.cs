@@ -13,6 +13,6 @@ namespace dotNetWebApiDI.Models
         public int Id { get; set; }
 
         [MaxLength(255)]
-        public int FirstName { get; set; }
+        public string FirstName { get; set; }
     }
 }
