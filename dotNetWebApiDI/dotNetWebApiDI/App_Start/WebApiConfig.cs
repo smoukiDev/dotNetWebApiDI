@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using dotNetWebApiDI.Core;
+using dotNetWebApiDI.Models;
+using dotNetWebApiDI.Persistance;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Unity;
 
 namespace dotNetWebApiDI
 {
@@ -35,6 +39,17 @@ namespace dotNetWebApiDI
                 .JsonFormatter
                 .SerializerSettings
                 .Formatting = Formatting.Indented;
+
+            SetDependencyInjection(config);
+        }
+
+        private static void SetDependencyInjection(HttpConfiguration config)
+        {
+            var container = new UnityContainer()
+                .RegisterType<IRepository<Customer>, CustomesRepository>()
+                .RegisterInstance(new ShopDbContext("name=Shop"));
+
+            config.DependencyResolver = new UnityResolver(container);
         }
     }
 }

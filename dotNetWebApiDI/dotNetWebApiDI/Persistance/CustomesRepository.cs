@@ -13,9 +13,9 @@ namespace dotNetWebApiDI.Persistance
     public class CustomesRepository : IRepository<Customer>
     {
         private readonly ShopDbContext context;
-        public CustomesRepository()
+        public CustomesRepository(ShopDbContext context)
         {
-            this.context = new ShopDbContext();
+            this.context = context;
         }
         public async Task<Customer> AddAsync(Customer item)
         {

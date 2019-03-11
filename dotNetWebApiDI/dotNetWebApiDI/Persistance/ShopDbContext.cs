@@ -8,8 +8,8 @@ namespace dotNetWebApiDI
 
     public class ShopDbContext : DbContext
     {
-        public ShopDbContext()
-            : base("name=Shop")
+        public ShopDbContext(string connectionName)
+            : base(connectionName)
         {
         }
 

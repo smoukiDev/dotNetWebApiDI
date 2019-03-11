@@ -15,9 +15,9 @@ namespace dotNetWebApiDI.Controllers
     {
         private readonly IRepository<Customer> repository;
 
-        public CustomersController()
+        public CustomersController(IRepository<Customer> repository)
         {
-            this.repository = new CustomesRepository();
+            this.repository = repository;
         }
         // GET api/<controller>
         public async Task<IHttpActionResult> Get()
