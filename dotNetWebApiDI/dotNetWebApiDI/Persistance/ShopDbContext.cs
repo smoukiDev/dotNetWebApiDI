@@ -13,7 +13,7 @@ namespace dotNetWebApiDI
         {
         }
 
-        public virtual DbSet<Customer> MyEntities { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
